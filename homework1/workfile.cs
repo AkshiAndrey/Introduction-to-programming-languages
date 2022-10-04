@@ -1,16 +1,16 @@
-/*Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
+/*Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
 
-2, 3, 7 -> 7
-44 5 78 -> 78
-22 3 9 -> 22 */
+4 -> да
+-3 -> нет
+7 -> нет*/
 
-int InputNumber() //Ввод целого цисла
+double InputNumber() //Ввод цисла
 {
-    int number;
+    double number;
     bool flag;
     while (true)
     {
-        flag = int.TryParse(Console.ReadLine()!, out number);
+        flag = double.TryParse(Console.ReadLine()!, out number);
         if (flag)
         {
                 break;
@@ -24,32 +24,15 @@ int InputNumber() //Ввод целого цисла
     return number;
 }
 
-int numberA, numberB, numberC, max;
+double number;
 
-Console.Write ("Введите первое число: ");
-numberA = InputNumber();
+Console.Write ("Введите число: ");
+number = InputNumber();
 
-Console.Write ("Введите второе число: ");
-numberB = InputNumber();
+Console.WriteLine(number % 2);
 
-Console.Write ("Введите третье число: ");
-numberC = InputNumber();
-
-//Console.WriteLine(numberA);
-//Console.WriteLine(numberB);
-//Console.WriteLine(numberC);
-
-if (numberA > numberB) max = numberA;
-
-else if (numberA == numberB) max = numberA;
-
-else max = numberB;
-
-if (numberB > numberC) max = numberB;
-
-else max = numberC;
-
-Console.WriteLine($"Максимальное число: {max}");
+if (number % 2 == 0) Console.WriteLine($"Число {number} четное.");
+else Console.WriteLine($"Число {number} нечетное.");
 
 
 
