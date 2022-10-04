@@ -4,7 +4,7 @@
 -3 -> нет
 7 -> нет*/
 
-double InputNumber() //Ввод цисла
+double InputNumber() //Ввод числа
 {
     double number;
     bool flag;
@@ -29,7 +29,7 @@ double number;
 Console.Write ("Введите число: ");
 number = InputNumber();
 
-Console.WriteLine(number % 2);
+//Console.WriteLine(number % 2);
 
 if (number % 2 == 0) Console.WriteLine($"Число {number} четное.");
 else Console.WriteLine($"Число {number} нечетное.");

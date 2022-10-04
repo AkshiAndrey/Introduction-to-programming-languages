@@ -4,7 +4,7 @@
 44 5 78 -> 78
 22 3 9 -> 22 */
 
-int InputNumber() //Ввод целого цисла
+int InputNumber() //Ввод целого числа
 {
     int number;
     bool flag;

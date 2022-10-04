@@ -39,5 +39,3 @@ while (index < number + 1)
     index += 2;
 }
 
-
-
