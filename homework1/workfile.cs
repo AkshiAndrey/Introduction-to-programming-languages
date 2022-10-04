@@ -1,0 +1,55 @@
+/*Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
+
+2, 3, 7 -> 7
+44 5 78 -> 78
+22 3 9 -> 22 */
+
+int InputNumber() //Ввод целого цисла
+{
+    int number;
+    bool flag;
+    while (true)
+    {
+        flag = int.TryParse(Console.ReadLine()!, out number);
+        if (flag)
+        {
+                break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод, введите целое число.");
+            Console.Write ("Введите число: ");
+        }
+    }   
+    return number;
+}
+
+int numberA, numberB, numberC, max;
+
+Console.Write ("Введите первое число: ");
+numberA = InputNumber();
+
+Console.Write ("Введите второе число: ");
+numberB = InputNumber();
+
+Console.Write ("Введите третье число: ");
+numberC = InputNumber();
+
+//Console.WriteLine(numberA);
+//Console.WriteLine(numberB);
+//Console.WriteLine(numberC);
+
+if (numberA > numberB) max = numberA;
+
+else if (numberA == numberB) max = numberA;
+
+else max = numberB;
+
+if (numberB > numberC) max = numberB;
+
+else max = numberC;
+
+Console.WriteLine($"Максимальное число: {max}");
+
+
+
