@@ -25,7 +25,7 @@ else Console.Write(b);
 
 */
 
-int rand = Random.Next(100, 1000);
+/*int rand = Random.Next(100, 1000);
 
 Console.Write(rand);
 
@@ -34,4 +34,4 @@ int b = rand % 10;
 
 if (a > b) Console.Write(a);
 else if (a == b) Console.Write($"{a} = {b}");
-else Console.Write(b);
+else Console.Write(b);*/
