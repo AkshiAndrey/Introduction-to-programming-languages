@@ -1,0 +1,46 @@
+/*
+Задача 21
+Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+A (3,6,8); B (2,1,-7), -> 15.84
+A (7,-5, 0); B (1,-1,9) -> 11.53
+*/
+
+int InputNumber() //Ввод целого числа 
+{
+    int number;
+    bool flag;
+    while (true)
+    {
+        flag = int.TryParse(Console.ReadLine()!, out number);
+        if (flag)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод, введите целое число.");
+            Console.Write("Введите число: ");
+        }
+    }
+    return number;
+}
+
+int[] pointA = new int[3];
+int[] pointB = new int[3];
+
+Console.Write("Введите координату X первой точки: ");
+pointA[0] = InputNumber();
+Console.Write("Введите координату Y первой точки: ");
+pointA[1] = InputNumber();
+Console.Write("Введите координату Z первой точки: ");
+pointA[2] = InputNumber();
+Console.Write("Введите координату X второй точки: ");
+pointB[0] = InputNumber();
+Console.Write("Введите координату Y второй точки: ");
+pointB[1] = InputNumber();
+Console.Write("Введите координату Z второй точки: ");
+pointB[2] = InputNumber();
+
+double result = Math.Sqrt(Math.Pow((pointA[0] - pointB[0]), 2) + Math.Pow((pointA[1] - pointB[1]), 2) + Math.Pow((pointA[2] - pointB[2]), 2));
+
+Console.Write(result);
