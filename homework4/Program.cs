@@ -1,0 +1,40 @@
+﻿/*
+Задача 25: Напишите функцию, используя цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
+*/
+
+int InputNumber() //Ввод целого числа
+{
+    int _number;
+    bool flag;
+    while (true)
+    {
+        flag = int.TryParse(Console.ReadLine()!, out _number);
+        if (flag)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод.");
+            Console.Write("Введите число: ");
+        }
+    }
+    return _number;
+}
+
+Console.WriteLine("Введите число А.");
+int numberA = InputNumber();
+
+Console.WriteLine("Введите число В.");
+int numberB = InputNumber();
+
+double Degree(int _numberA, int _numberB)
+{
+    return Math.Pow(numberA, numberB);
+}
+
+Console.WriteLine($"Результат возведения числа {numberA} в степень {numberB}: {Degree(numberA, numberB)}");
+
+
