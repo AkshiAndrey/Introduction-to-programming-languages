@@ -1,0 +1,50 @@
+﻿/*
+Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
+b1 = 2, k1 = 5, b2 = 4, k2 = 9 -> (-0,5; -0,5)
+*/
+//Методы
+int InputNumber() //Ввод целого числа
+{
+    int number;
+    bool flag;
+    while (true)
+    {
+        flag = int.TryParse(Console.ReadLine()!, out number);
+        if (flag)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод, введите целое число.");
+            Console.Write("Введите число: ");
+        }
+    }
+    return number;
+}
+
+int k1, k2, b1, b2;
+double coordx, coordy;
+
+Console.Write("Введите k1: ");
+k1 = InputNumber();
+Console.Write("Введите k2: ");
+k2 = InputNumber();
+/*
+Console.Write("Введите b1: ");
+b1 = InputNumber();
+Console.Write("Введите b2: ");
+b2 = InputNumber();
+
+if (k1 == k2 && b1 == b2) Console.WriteLine($"Прямые лежат одна в другой");
+else if (k1 == k2) Console.WriteLine($"Прямые не пересакаются");
+else
+{
+    coordx = -(b1 - b2) / (k1 - k2);
+    coordy = k1 * coordx + b1;
+    Console.WriteLine($"Точка пересечения прямых -> ({coordx},{coordy})");
+}
+*/
+
+coordx = k1 / k2;
+Console.Write($"X = {coordx}");

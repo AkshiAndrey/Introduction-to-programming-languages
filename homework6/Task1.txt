@@ -1,0 +1,50 @@
+/*
+Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+0, 7, 8, -2, -2 -> 2
+1, -7, 567, 89, 223-> 3
+*/
+//Методы
+int InputNumber() //Ввод целого числа
+{
+    int number;
+    bool flag;
+    while (true)
+    {
+        flag = int.TryParse(Console.ReadLine()!, out number);
+        if (flag)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод, введите целое число.");
+            Console.Write("Введите число: ");
+        }
+    }
+    return number;
+}
+
+
+Console.WriteLine("Сколько чисел нужно ввести? ");
+int countM = InputNumber();
+
+//Смысла в массиве не много, но название домашки двумерный массив, пусть будет.
+int[,] array = new int[countM, 2];
+array[0, 1] = 0;
+Console.WriteLine($"Введите значения:");
+
+for (int i = 0; i < countM; i++) //Ввод массива и подсчет положительных чисел.
+{
+    Console.Write($"{i + 1}) ");
+    array[i, 0] = InputNumber();
+    if (array[i, 0] > 0) array[0, 1]++;
+}
+Console.Write("["); // Вывод массива и результата.
+
+for (int i = 0; i < countM - 1; i++)
+{
+    Console.Write($"{array[i, 0]}, ");
+}
+Console.Write($"{array[countM - 1, 0]}] ");
+
+Console.WriteLine($"Чисел больше 0: {array[0, 1]}");
