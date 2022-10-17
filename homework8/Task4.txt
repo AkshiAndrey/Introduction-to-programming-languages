@@ -1,0 +1,74 @@
+/*
+Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1)
+*/
+
+int m = 2, n = 2, y = 2;
+int[,,] array = new int[m, n, y];
+
+array = FillArray(m, n, y, 90, 100);
+Console.WriteLine();
+PrintArray(array);
+
+
+
+
+
+
+// Методы.
+int[,,] FillArray(int sizeM, int sizeN, int sizeY, int min = 1, int max = 10)
+{
+    int[,,] _array = new int[sizeM, sizeN, sizeY];
+
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+        {
+            for (int k = 0; k < _array.GetLength(2); k++)
+            {
+                int temp;
+                while (true)
+                {
+                    bool flag2 = true;
+                    temp = new Random().Next(min, max);
+                    foreach (var item in _array)
+                    {
+                        if (item == temp)
+                        {
+                            flag2 = false;
+                        }
+                    }
+                    if (flag2) _array[i, j, k] = temp;
+                    else continue;
+                    break;
+                }
+                //Console.WriteLine($"{_array[i, j, k]} {i} {j} {k}");
+            }
+        }
+        //Console.WriteLine();
+    }
+    return _array;
+}
+
+void PrintArray(int[,,] _array)
+{
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+        {
+            for (int k = 0; k < _array.GetLength(2); k++)
+            {
+
+                Console.Write($"{_array[i, j, k]} ({i}, {j}, {k}) ");
+            }
+            Console.WriteLine();
+
+        }        
+    }
+}
+
+

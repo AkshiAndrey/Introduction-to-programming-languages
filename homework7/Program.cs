@@ -1,38 +1,62 @@
 ﻿/*
-Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
+Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
 Например, задан массив:
 1 4 7 2
 5 9 2 3
 8 4 2 4
-Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+17 -> такого числа в массиве нет
 */
 
-//Основной код
-int m = 3, n = 4;
-int[,] array = new int[m, n];
-double[] resArray = new double[n];
-
-for (int i = 0; i < m; i++) //Генерируем двумерный массив.
+//Методы
+/*
+int InputNumber() //Ввод целого числа
 {
-    for (int j = 0; j < n; j++)
+    int number;
+    bool flag;
+    while (true)
     {
-        array[i, j] = new Random().Next(10);
-        Console.Write($"{array[i, j]} ");
+        flag = int.TryParse(Console.ReadLine()!, out number);
+        if (flag)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Не верный ввод, введите целое число.");
+            Console.Write("Введите число: ");
+        }
     }
-    Console.WriteLine();
-};
+    return number;
+}
+*/
 
-for (int i = 0; i < n; i++) resArray[i] = 0; //Массив для расчета результата.
-
-for (int i = 0; i < m; i++)
+//[DllImport("avifil32.dll")]
+//static extern
+int[,] CreateArrayMN(int _m, int _n) //Создание двумерного массива размером M, N. значения от 0 до 10, Который не понятно как запустить!!!
 {
-    for (int j = 0; j < n; j++) resArray[j] += array[i, j]; //Находим сумму значений в столбцах.
+    int[,] _array = new int[_m, _n];
+    for (int i = 0; i < _m; i++)
+    {
+        for (int j = 0; j < _n; j++)
+        {
+            _array[i, j] = new Random().Next(10);
+            Console.Write($"{_array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+    return _array;
 }
 
-Console.Write("Среднее арифметическое каждого столбца: "); //Вывод среднего арифметического в консоль.
-foreach (var item in resArray)
-{
-    Console.Write($"{Math.Round(item / m, 2)}; ");
-}
+//Основной код
+int m = 4;
+int n = 4;
+int[,] array = new int[m, n];
 
+array = CreateArrayMN(m, n);
+
+/*
+Console.WriteLine($"Введите позицию элемента");
+int position = InputNumber();
+if ((position / 10 > m) || (position % 10 > n)) Console.WriteLine("Такого числа в массиве нет.");
+else Console.WriteLine($"На позиции {position} находится число: {array[position / 10, position % 10]} ");
+*/

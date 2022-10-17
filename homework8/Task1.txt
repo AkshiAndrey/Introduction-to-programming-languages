@@ -1,0 +1,71 @@
+/*
+Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+В итоге получается вот такой массив:
+7 4 2 1
+9 5 3 2
+8 4 4 2
+*/
+
+int m = 3, n = 4;
+int[,] array = new int[m, n];
+array = FillArray(m, n);
+for (int i = 0; i < m; i++)
+{
+
+    for (int j = 0; j < n; j++)
+    {
+        int min = array[i, j];
+        int indexMin = j;
+        for (int k = j + 1; k < n; k++)
+        {
+
+            if (array[i, k] < min)
+            {
+                min = array[i, k];
+                indexMin = k;
+            }
+
+        }
+        array[i, indexMin] = array[i, j];
+        array[i, j] = min;
+
+
+    }
+}
+PrintArray(array);
+
+
+
+
+
+
+// Методы.
+int[,] FillArray(int sizeM, int sizeN, int min = 0, int max = 10)
+{
+    int[,] _array = new int[sizeM, sizeN];
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+        {
+            _array[i, j] = new Random().Next(min, max);
+            Console.Write($"{_array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+    return _array;
+}
+
+void PrintArray(int[,] _array)
+{
+    Console.WriteLine();
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+            Console.Write($"{_array[i, j]} ");
+        Console.WriteLine();
+    }
+}

@@ -1,0 +1,74 @@
+/*
+Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Например, даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18
+*/
+
+int m1 = 2, n1 = 2, m2 = 2, n2 = 2;
+int[,] array1 = new int[m1, n1];
+int[,] array2 = new int[m2, n2];
+
+if (n1 == m2)
+{
+    Console.WriteLine($"Первая матрица:");
+    array1 = FillArray(m1, n1, 1, 10);
+    Console.WriteLine($"Вторая матрица:");
+    array2 = FillArray(m2, n2, 1, 10);
+    Console.Write($"Результирующая матрица:");
+    int[,] arrayRes = new int[m2, n1];
+
+    for (int i = 0; i < m1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+        {
+            for (int k = 0; k < n1; k++)
+            {
+                arrayRes[i, j] += array1[i, k] * array2[k, j];
+            }
+        }
+    }
+    PrintArray(arrayRes);
+
+
+}
+else Console.WriteLine("Произведение матриц не возможно.");
+
+
+
+
+
+
+
+
+
+// Методы.
+int[,] FillArray(int sizeM, int sizeN, int min = 0, int max = 10)
+{
+    int[,] _array = new int[sizeM, sizeN];
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+        {
+            _array[i, j] = new Random().Next(min, max);
+            Console.Write($"{_array[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+    return _array;
+}
+
+void PrintArray(int[,] _array)
+{
+    Console.WriteLine();
+    for (int i = 0; i < _array.GetLength(0); i++)
+    {
+        for (int j = 0; j < _array.GetLength(1); j++)
+            Console.Write($"{_array[i, j]} ");
+        Console.WriteLine();
+    }
+}
+
